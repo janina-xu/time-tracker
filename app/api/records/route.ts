@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
 
   const record = await db.execute({
     sql: 'SELECT * FROM Record WHERE id = ?',
-    args: [result.lastInsertRowid],
+    args: [Number(result.lastInsertRowid)],
   })
 
   return NextResponse.json(record.rows[0])
